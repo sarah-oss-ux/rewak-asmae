@@ -1,0 +1,31 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+products = [
+    {
+        "name": "عباية أنيقة",
+        "price": 250,
+        "image": "abaya1.jpg",
+        "sizes": "S / M / L / XL / XXL"
+    },
+    {
+        "name": "عباية عصرية",
+        "price": 180,
+        "image": "abaya2.jpg",
+        "sizes": "S / M / L / XL"
+    },
+    {
+        "name": "عباية كلاسيك",
+        "price": 200,
+        "image": "abaya3.jpg",
+        "sizes": "M / L / XL / XXL"
+    }
+]
+
+@app.route("/")
+def home():
+    return render_template("index.html", products=products)
+
+if __name__ == "__main__":
+    app.run(debug=True)
